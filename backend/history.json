@@ -1,0 +1,16 @@
+[
+    {
+        "timestamp": "2025-05-29 02:08:54",
+        "original_text": "bonjour je m'appelle Yann",
+        "corrected_text": "Bonjour, je m'appelle Yann",
+        "word_count": 4,
+        "speech_rate": 80.0
+    },
+    {
+        "timestamp": "2025-05-29 02:09:12",
+        "original_text": "bonjour je m'appelle Yann",
+        "corrected_text": "Bonjour, je m'appelle Yann",
+        "word_count": 4,
+        "speech_rate": 81.6
+    }
+]

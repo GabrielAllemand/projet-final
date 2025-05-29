@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+speechrecognition
+pyaudio
+python-multipart

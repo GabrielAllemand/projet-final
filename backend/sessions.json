@@ -1,0 +1,23 @@
+{"timestamp": "2025-05-28T20:11:31.871371", "text": "bonjour je m'appelle Yann et j'ai 23", "tics": {"tics": {"euh": 0, "du coup": 0, "genre": 0, "en fait": 0, "bah": 0, "quoi": 0}, "total": 0}}
+{"timestamp": "2025-05-28T20:12:34.687748", "text": "bonjour je m'appelle Yann", "tics": {"tics": {"euh": 0, "du coup": 0, "genre": 0, "en fait": 0, "bah": 0, "quoi": 0}, "total": 0}}
+{"timestamp": "2025-05-28T20:12:48.992814", "text": "du coup", "tics": {"tics": {"euh": 0, "du coup": 0, "genre": 0, "en fait": 0, "bah": 0, "quoi": 0}, "total": 0}}
+{"timestamp": "2025-05-28T20:12:58.673584", "text": "je m'appelle Yann", "tics": {"tics": {"euh": 0, "du coup": 0, "genre": 0, "en fait": 0, "bah": 0, "quoi": 0}, "total": 0}}
+{"timestamp": "2025-05-28T20:13:13.955694", "text": "quoi tu as dit quoi", "tics": {"tics": {"euh": 0, "du coup": 0, "genre": 0, "en fait": 0, "bah": 0, "quoi": 2}, "total": 2}}
+{"timestamp": "2025-05-28T20:13:21.107397", "text": "quoi tu as dit quoi", "tics": {"tics": {"euh": 0, "du coup": 0, "genre": 0, "en fait": 0, "bah": 0, "quoi": 2}, "total": 2}}
+{"timestamp": "2025-05-28T20:13:30.606574", "text": "bonjour c'est Yann", "tics": {"tics": {"euh": 0, "du coup": 0, "genre": 0, "en fait": 0, "bah": 0, "quoi": 0}, "total": 0}}
+{"timestamp": "2025-05-28T20:38:17.215226", "text": "bonjour moi c'est Yann", "tics": {"total_tics": 0, "tics_detected": {}}}
+{"timestamp": "2025-05-28T20:39:30.573058", "text": "bonjour moi c'est", "tics": {"total_tics": 0, "tics_detected": {}}}
+{"timestamp": "2025-05-28T20:40:06.154691", "text": "moi je m'appelle Yann", "tics": {"total_tics": 0, "tics_detected": {}}}
+{"timestamp": "2025-05-28T20:57:43.583748", "text": "bonjour moi c'est Yann", "tics": {"total_tics": 0, "tics_detected": {}}}
+{"timestamp": "2025-05-28T22:06:56.441245", "text": "bonjour c'est Yann", "tics": {"total_tics": 0, "tics_detected": {}}, "word_count": 3, "duration_seconds": 2.76, "wpm": 65.22}
+{"timestamp": "2025-05-28T22:07:04.742185", "text": "bonjour je m'appelle", "tics": {"total_tics": 0, "tics_detected": {}}, "word_count": 3, "duration_seconds": 2.94, "wpm": 61.22}
+{"timestamp": "2025-05-28T22:07:25.933972", "text": "bonjour je m'appelle", "tics": {"total_tics": 0, "tics_detected": {}}, "word_count": 3, "duration_seconds": 2.94, "wpm": 61.22}
+{"timestamp": "2025-05-28T22:08:26.666604", "text": "bonjour", "tics": {"total_tics": 0, "tics_detected": {}}, "word_count": 1, "duration_seconds": 2.94, "wpm": 20.41}
+{"timestamp": "2025-05-28T22:12:20.138882", "text": "bonjour", "tics": {"total_tics": 0, "tics_detected": {}}, "word_count": 1, "duration_seconds": 2.58, "wpm": 23.26}
+{"timestamp": "2025-05-28T22:13:28.387533", "text": "bonjour", "tics": {"total_tics": 0, "tics_detected": {}}, "word_count": 1, "duration_seconds": 2.94, "wpm": 20.41}
+{"timestamp": "2025-05-28T22:17:04.085450", "text": "bonjour moi c'est", "tics": {"total_tics": 0, "tics_detected": {}}, "word_count": 3, "duration_seconds": 2.94, "wpm": 61.22}
+{"timestamp": "2025-05-28T22:17:13.654798", "text": "bonjour moi", "tics": {"total_tics": 0, "tics_detected": {}}, "word_count": 2, "duration_seconds": 3.0, "wpm": 40.0}
+{"timestamp": "2025-05-28T22:35:44.787690", "text": "bonjour", "tics": {"total_tics": 0, "tics_detected": {}}, "word_count": 1, "duration_seconds": 3.0, "wpm": 20.0}
+{"timestamp": "2025-05-28T23:51:36.465021", "text": "bonjour", "tics": {"total_tics": 0, "tics_detected": {}}, "word_count": 1, "duration_seconds": 2.94, "wpm": 20.41}
+{"timestamp": "2025-05-29T00:09:53.333127", "text": "bonjour je m'appelle Yann et j'ai", "tics": {"total_tics": 0, "tics_detected": {}}, "word_count": 6, "duration_seconds": 3.0, "wpm": 120.0, "emotion": "neutre", "eloquence_score": 100}
+{"timestamp": "2025-05-29T00:19:44.507658", "text": "bonjour moi c'est Yann", "tics": {"total_tics": 0, "tics_detected": {}}, "word_count": 4, "duration_seconds": 2.94, "wpm": 81.63, "emotion": "positif", "eloquence_score": 100}
