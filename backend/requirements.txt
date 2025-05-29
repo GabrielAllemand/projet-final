@@ -3,3 +3,5 @@ uvicorn
 speechrecognition
 pyaudio
 python-multipart
+language_tool_python
+motor
