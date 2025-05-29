@@ -1,0 +1,116 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.statsSection {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+}
+
+.error {
+  color: red;
+  background-color: #ffebee;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.selectionSection {
+  margin-bottom: 20px;
+}
+
+.select {
+  padding: 8px;
+  margin-right: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.exerciseSection {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.questionText {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.form {
+  margin-bottom: 20px;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.primaryButton {
+  composes: button;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.recordButton {
+  composes: button;
+  background-color: #2196F3;
+  color: white;
+  margin-right: 10px;
+}
+
+.stopRecordButton {
+  composes: button;
+  background-color: #f44336;
+  color: white;
+  margin-right: 10px;
+}
+
+.resultSection {
+  background-color: #e8f5e9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.resultTitle {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.boldText {
+  font-weight: bold;
+}
+
+.correctionsList {
+  list-style: none;
+  padding: 0;
+}
+
+.correctionItem {
+  margin-bottom: 10px;
+} 
