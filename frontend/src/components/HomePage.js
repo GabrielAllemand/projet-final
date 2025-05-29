@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
+import AnimatedLogo from "./AnimatedLogo";
 
 const HomePage = () => {
   const [recording, setRecording] = useState(false);
+  const [showHistory, setShowHistory] = useState(false);
   const mediaRecorderRef = useRef(null);
   const [audioChunks, setAudioChunks] = useState([]);
   const [transcription, setTranscription] = useState("");
@@ -12,7 +14,7 @@ const HomePage = () => {
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/sessions/")
+    fetch("http://localhost:8001/sessions/")
       .then((res) => res.json())
       .then((data) => setHistory(data))
       .catch(() => setHistory([]));
@@ -47,7 +49,7 @@ const HomePage = () => {
     const formData = new FormData();
     formData.append("file", audioBlob, "audio.webm");
 
-    fetch("http://localhost:8000/transcribe/", {
+    fetch("http://localhost:8001/transcribe/", {
       method: "POST",
       body: formData,
     })
@@ -81,7 +83,7 @@ const HomePage = () => {
   };
 
   const saveHistory = (newSession) => {
-    fetch("http://localhost:8000/sessions/", {
+    fetch("http://localhost:8001/sessions/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -89,7 +91,7 @@ const HomePage = () => {
       body: JSON.stringify(newSession),
     })
       .then(() => {
-        return fetch("http://localhost:8000/sessions/");
+        return fetch("http://localhost:8001/sessions/");
       })
       .then((res) => res.json())
       .then((data) => setHistory(data))
@@ -97,7 +99,7 @@ const HomePage = () => {
   };
 
   const clearHistory = () => {
-    fetch("http://localhost:8000/sessions/", {
+    fetch("http://localhost:8001/sessions/", {
       method: "DELETE",
     })
       .then(() => setHistory([]))
@@ -105,65 +107,116 @@ const HomePage = () => {
   };
 
   return (
-    <div>
-      <h1>Orthéloquence - Big Boss Edition</h1>
+    <div className="flex flex-col items-center">
+      <h1 className="title">Éloquence</h1>
 
-      {!recording ? (
-        <button onClick={startRecording} style={{ fontSize: 20, padding: "10px 20px" }}>
-          🎙️ Démarrer l'enregistrement
-        </button>
-      ) : (
-        <button onClick={stopRecording} style={{ fontSize: 20, padding: "10px 20px", backgroundColor: "#f44336", color: "white" }}>
-          ⏹️ Arrêter l'enregistrement
-        </button>
-      )}
+      <div className="card" style={{ width: "100%", maxWidth: "1200px" }}>
+        <div className="flex flex-col items-center gap-10">
+          {!recording ? (
+            <button 
+              onClick={startRecording} 
+              className="action-button"
+            >
+              🎙️ Démarrer l'enregistrement
+            </button>
+          ) : (
+            <button 
+              onClick={stopRecording} 
+              className="action-button recording"
+            >
+              ⏹️ Arrêter l'enregistrement
+            </button>
+          )}
+          
+          <AnimatedLogo isRecording={recording} />
 
-      <div style={{ marginTop: 20 }}>
-        <h3>Transcription brute :</h3>
-        <p>{transcription || "Aucune transcription pour l'instant."}</p>
+          <div className="card" style={{ width: "100%" }}>
+            <h3 className="subtitle">Transcription brute</h3>
+            <p style={{ fontSize: "1.1em", lineHeight: "1.6" }}>{transcription || "Aucune transcription pour l'instant."}</p>
 
-        <h3>Texte corrigé :</h3>
-        <p>{correctedText || "Aucune correction pour l'instant."}</p>
+            <h3 className="subtitle mt-20">Texte corrigé</h3>
+            <p style={{ fontSize: "1.1em", lineHeight: "1.6" }}>{correctedText || "Aucune correction pour l'instant."}</p>
 
-        <p>
-          <strong>Nombre de mots :</strong> {wordCount} | <strong>Vitesse (mots/min) :</strong> {speechRate}
-        </p>
+            <div className="flex gap-10 mt-20">
+              <div className="card" style={{ flex: 1, padding: "15px" }}>
+                <strong style={{ fontSize: "1.1em" }}>Nombre de mots :</strong> {wordCount}
+              </div>
+              <div className="card" style={{ flex: 1, padding: "15px" }}>
+                <strong style={{ fontSize: "1.1em" }}>Vitesse :</strong> {speechRate} mots/min
+              </div>
+            </div>
 
-        <h4>Tics détectés :</h4>
-        <ul>
-          {Object.entries(ticCounts).map(([tic, count]) => (
-            <li key={tic}>
-              {tic}: {count}
-            </li>
-          ))}
-        </ul>
+            {Object.keys(ticCounts).length > 0 && (
+              <div className="mt-20">
+                <h4 className="subtitle">Tics détectés</h4>
+                <div className="flex flex-wrap gap-10">
+                  {Object.entries(ticCounts).map(([tic, count]) => (
+                    <div key={tic} className="card" style={{ flex: "1 1 200px", padding: "15px" }}>
+                      <strong style={{ fontSize: "1.1em" }}>{tic}:</strong> {count}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
 
-      <hr />
+      <div className="card mt-20" style={{ width: "100%", maxWidth: "1200px" }}>
+        <div className="flex flex-col items-center gap-10">
+          <h2 className="subtitle" style={{ margin: 0 }}>Historique des sessions</h2>
+          
+          <div className="flex gap-10">
+            <button 
+              onClick={() => setShowHistory(!showHistory)}
+              className="action-button"
+              style={{ backgroundColor: showHistory ? "var(--accent-color)" : "var(--primary-color)" }}
+            >
+              {showHistory ? "Masquer l'historique" : "Afficher l'historique"}
+            </button>
+            <button 
+              onClick={clearHistory} 
+              style={{ backgroundColor: "var(--danger-color)" }}
+            >
+              Vider l'historique
+            </button>
+          </div>
 
-      <div>
-        <h2>Historique des sessions</h2>
-        {history.length === 0 ? (
-          <p>Aucune session enregistrée.</p>
-        ) : (
-          <ul>
-            {history.map((session, idx) => (
-              <li key={idx} style={{ marginBottom: 15 }}>
-                <strong>Date :</strong> {new Date(session.date).toLocaleString()} <br />
-                <strong>Texte corrigé :</strong> {session.corrected} <br />
-                <strong>Nombre de mots :</strong> {session.wordCount} <br />
-                <strong>Vitesse :</strong> {session.speechRate} mots/min <br />
-                <strong>Tics :</strong>{" "}
-                {Object.entries(session.ticCounts)
-                  .map(([tic, count]) => `${tic} (${count})`)
-                  .join(", ")}
-              </li>
-            ))}
-          </ul>
-        )}
-        <button onClick={clearHistory} style={{ marginTop: 10, backgroundColor: "#f44336", color: "white", padding: "8px 12px" }}>
-          Vider l'historique
-        </button>
+          {showHistory && (
+            <>
+              {history.length === 0 ? (
+                <p className="text-center">Aucune session enregistrée.</p>
+              ) : (
+                <div className="flex flex-col gap-10" style={{ width: "100%" }}>
+                  {history.map((session, idx) => (
+                    <div key={idx} className="card">
+                      <div className="flex justify-between mb-10">
+                        <strong style={{ fontSize: "1.1em" }}>Date :</strong> {new Date(session.date).toLocaleString()}
+                      </div>
+                      <p style={{ fontSize: "1.1em", lineHeight: "1.6" }}><strong>Texte corrigé :</strong> {session.corrected}</p>
+                      <div className="flex gap-10 mt-10">
+                        <div className="card" style={{ flex: 1, padding: "15px" }}>
+                          <strong style={{ fontSize: "1.1em" }}>Nombre de mots :</strong> {session.wordCount}
+                        </div>
+                        <div className="card" style={{ flex: 1, padding: "15px" }}>
+                          <strong style={{ fontSize: "1.1em" }}>Vitesse :</strong> {session.speechRate} mots/min
+                        </div>
+                      </div>
+                      {Object.keys(session.ticCounts).length > 0 && (
+                        <div className="mt-10">
+                          <strong style={{ fontSize: "1.1em" }}>Tics :</strong>{" "}
+                          {Object.entries(session.ticCounts)
+                            .map(([tic, count]) => `${tic} (${count})`)
+                            .join(", ")}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

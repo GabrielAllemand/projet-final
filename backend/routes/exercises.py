@@ -1,6 +1,7 @@
 import language_tool_python
 from fastapi import APIRouter
 from pydantic import BaseModel
+from typing import Optional
 
 # Assurez-vous que l'instance de LanguageTool est créée
 try:
@@ -15,7 +16,20 @@ router = APIRouter()
 EXERCISES = {
     "Grammaire": [
         "Corrige la phrase : 'Il ont mangé les pommes.'",
-        "Transforme cette phrase au passé composé."
+        "Corrige la phrase suivante : 'Je mange une pomme.'",
+        "Corrige la phrase suivante : 'Tu mange une pomme.'",
+        "Corrige la phrase suivante : 'Il mange une pomme.'",
+        "Corrige la phrase suivante : 'Nous mangeons une pomme.'",
+        "Corrige la phrase suivante : 'Vous mangez une pomme.'",
+        "Corrige la phrase suivante : 'Ils mangent une pomme.'",
+        "Corrige la phrase suivante : 'Il mangeons une pizza.'",
+        "Corrige la phrase suivante : 'Tu fini ton travail trop tard.'",
+        "Corrige la phrase suivante : 'Nous fais du sport chaque semaine.'",
+        "Corrige la phrase suivante : 'Elles prends le bus à 8h.'",
+        "Corrige la phrase suivante : 'Je regardes un film intéressant.'",
+        "Corrige la phrase suivante : 'Vous vas au marché ?'",
+        "Corrige la phrase suivante : 'On jouent dans le jardin.'",
+        "Transforme cette phrase au passé composé"
     ],
     "Vocabulaire": [
         "Trouve le synonyme de 'rapide'.",
@@ -32,13 +46,13 @@ class ExerciseEvaluationRequest(BaseModel):
     category: str
     question: str
     answer: str # Réponse texte de l'utilisateur (peut aussi servir pour la transcription brute initiale)
-    transcription_data: dict | None = None # Ajouter ce champ pour les données de transcription orale
+    transcription_data: Optional[dict] = None # Ajouter ce champ pour les données de transcription orale
 
 class EvaluationResult(BaseModel):
     score: int
     message: str
     corrections: list = [] # Liste des corrections LanguageTool
-    transcription_data: dict | None = None # Pour les résultats de transcription si applicable
+    transcription_data: Optional[dict] = None # Pour les résultats de transcription si applicable
 
 
 @router.get("/list")
